@@ -1,15 +1,9 @@
 var fs = require('fs')
-var path = require('path')
-var dir = process.argv[2];
-var ext = process.argv[3];
-
-fs.readdir(dir, function(err,list){
-	var count = 0;
+var file = process.argv[2]
+//console.log(file)
+fs.readFile(file, function(err,buffer){
 	if(!err){
-		for(var i=0;i<list.length;i++){
-			if(path.extname(list[i]) === "."+ext){
-				console.log(list[i]);			
-			}
-		}
+		var count = buffer.toString().split('\n').length - 1;
+		console.log(count)
 	}
 })
