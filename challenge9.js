@@ -8,15 +8,15 @@ numReturned=0;
 
 urls.forEach(function(url,i) {
 	http.get(url, function(response){
-	response.setEncoding("utf8");
-	response.pipe(bl(function(err, data){
-			if(err)
-				return console.error(err);
-			results[i]=data.toString();
-			numReturned++;
-			if(numReturned>=urls.length)
-				console.log(results.join("\n"))
-		}));
+		response.setEncoding("utf8");
+		response.pipe(bl(function(err, data){
+				if(err)
+					return console.error(err);
+				results[i]=data.toString();
+				numReturned++;
+				if(numReturned>=urls.length)
+					console.log(results.join("\n"))
+			}));
 
 	})
 })
